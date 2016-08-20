@@ -19,11 +19,6 @@ public class ScheduleMakerWindow extends JFrame {
 		schedulePanel.setBackground(Color.WHITE);
 		schedulePanel.setBounds(10, 11, 684, 962);
 		
-		
-		
-		
-		
-		
 		getContentPane().add(schedulePanel);
 		schedulePanel.setLayout(null);
 		
