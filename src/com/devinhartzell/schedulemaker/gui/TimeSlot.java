@@ -21,6 +21,8 @@ public class TimeSlot extends JTextPane {
 		else
 			setBackground(Color.WHITE);
 		
+		setEditable(false);
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.devinhartzell.schedulemaker.gui;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -35,7 +36,7 @@ public class ScheduleMakerWindow extends JFrame {
 		for (int i = 0; i <= 31; i++) {
 			schedulePanel.add(new TimePanel(i, i % 2 == 0));
 			for (int j = 0; j <=5; j++) {
-				schedulePanel.add(new TimeSlot(j, i, c));
+				addTimeSlot(j, i, c);
 				
 			}
 			c = !c;
@@ -44,8 +45,13 @@ public class ScheduleMakerWindow extends JFrame {
 		
 		
 		
-		
 		setVisible(true);
+		
+	}
+	
+	public void addTimeSlot(int day, int period, boolean colored) {
+		scheduleArray[day][period] = new TimeSlot(day, period, colored);
+		schedulePanel.add(scheduleArray[day][period]);
 		
 	}
 }
