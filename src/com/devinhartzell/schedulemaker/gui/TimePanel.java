@@ -21,11 +21,7 @@ public class TimePanel extends JTextPane {
 		int hr = tmin / 60;
 		String min = Integer.toString(tmin % 60);
 		if (min.equals("0")) min = "00";
-		
 		this.setText(String.format("%s:%s", hr, min));
-		
-		this.setBounds(0, (29 * period) + 34, 52, 29);
-		
+		this.setBounds(0, (29 * period) + 34, 52, 29);		
 	}
-
 }

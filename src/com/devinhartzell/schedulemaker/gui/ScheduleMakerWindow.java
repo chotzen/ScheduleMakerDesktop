@@ -31,9 +31,17 @@ public class ScheduleMakerWindow extends JFrame {
 		header.setBounds(0, 0, 684, 34);
 		schedulePanel.add(header);
 		
+		boolean c = false;
+		
 		for (int i = 0; i <= 31; i++) {
 			schedulePanel.add(new TimePanel(i, i % 2 == 0));
+			for (int j = 1; j <=6; j++) {
+				schedulePanel.add(new TimeSlot(j, i, c));
+				
+			}
+			c = !c;
 		}
+		
 		
 		
 		
