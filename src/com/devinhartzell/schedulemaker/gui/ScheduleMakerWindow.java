@@ -8,6 +8,10 @@ public class ScheduleMakerWindow extends JFrame {
 
 	private static final long serialVersionUID = 8145209520541863844L;
 	
+	private JPanel schedulePanel;
+	
+	private TimeSlot[][] scheduleArray = new TimeSlot[6][32];
+	
 	public ScheduleMakerWindow() {
 		super("Schedule Maker");
 
@@ -15,7 +19,7 @@ public class ScheduleMakerWindow extends JFrame {
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
-		JPanel schedulePanel = new JPanel();
+		schedulePanel = new JPanel();
 		schedulePanel.setBackground(Color.WHITE);
 		schedulePanel.setBounds(10, 11, 684, 962);
 		
@@ -30,7 +34,7 @@ public class ScheduleMakerWindow extends JFrame {
 		
 		for (int i = 0; i <= 31; i++) {
 			schedulePanel.add(new TimePanel(i, i % 2 == 0));
-			for (int j = 1; j <=6; j++) {
+			for (int j = 0; j <=5; j++) {
 				schedulePanel.add(new TimeSlot(j, i, c));
 				
 			}

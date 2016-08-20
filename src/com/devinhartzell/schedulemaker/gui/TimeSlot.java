@@ -11,10 +11,10 @@ public class TimeSlot extends JTextPane {
 	// day >=1, day <=6
 	// period >=0, period <=31
 	public TimeSlot(int day, int period, boolean colored) {
-		if (day < 1 || day > 6 || period < 0 || period > 31) 
+		if (day < 0 || day > 5 || period < 0 || period > 31) 
 			throw new NullPointerException();
 		
-		setBounds(((day-1) * 105) + 52, (period * 29) + 34, 105, 29);
+		setBounds((day * 105) + 52, (period * 29) + 34, 105, 29);
 		
 		if (colored)
 			setBackground(Color.LIGHT_GRAY);
