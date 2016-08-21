@@ -4,6 +4,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.UIManager;
 
 public class ScheduleMakerWindow extends JFrame {
 
@@ -12,6 +15,7 @@ public class ScheduleMakerWindow extends JFrame {
 	private JPanel schedulePanel;
 	
 	private TimeSlot[][] scheduleArray = new TimeSlot[6][32];
+	private JTextField ABCDEF;
 	
 	public ScheduleMakerWindow() {
 		super("Schedule Maker");
@@ -30,6 +34,17 @@ public class ScheduleMakerWindow extends JFrame {
 		JPanel header = new JPanel();
 		header.setBounds(0, 0, 684, 34);
 		schedulePanel.add(header);
+		header.setLayout(null);
+		
+		ABCDEF = new JTextField();
+		ABCDEF.setEditable(false);
+		ABCDEF.setText("          A                   B                   C"
+				+ "                   D                   E                   F");
+		ABCDEF.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ABCDEF.setBounds(40, 5, 634, 29);
+		header.add(ABCDEF);
+		ABCDEF.setOpaque(false);
+		ABCDEF.setBorder(null);
 		
 		boolean c = false;
 		
@@ -41,7 +56,6 @@ public class ScheduleMakerWindow extends JFrame {
 			}
 			c = !c;
 		}
-		
 		
 		
 		
