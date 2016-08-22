@@ -9,6 +9,7 @@ import com.devinhartzell.schedulemaker.Section;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.SwingConstants;
 
 public class ScheduleMakerWindow extends JFrame {
 
@@ -23,31 +24,34 @@ public class ScheduleMakerWindow extends JFrame {
 	public ScheduleMakerWindow() {
 		super("Schedule Maker");
 
-		setSize(968, 1025);
+		setSize(833, 1025);
 		setResizable(false);
 		getContentPane().setLayout(null);
 		
 		schedulePanel = new JPanel();
 		schedulePanel.setBackground(Color.WHITE);
-		schedulePanel.setBounds(10, 11, 684, 962);
+		schedulePanel.setBounds(10, 11, 802, 962);
 		
 		getContentPane().add(schedulePanel);
 		schedulePanel.setLayout(null);
 		
 		JPanel header = new JPanel();
-		header.setBounds(0, 0, 684, 34);
+		header.setBounds(0, 0, 802, 34);
 		schedulePanel.add(header);
 		header.setLayout(null);
 		
-		ABCDEF = new JTextField();
-		ABCDEF.setEditable(false);
-		ABCDEF.setText("          A                   B                   C"
-				+ "                   D                   E                   F");
-		ABCDEF.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		ABCDEF.setBounds(40, 5, 634, 29);
-		header.add(ABCDEF);
-		ABCDEF.setOpaque(false);
-		ABCDEF.setBorder(null);
+		for (int i = 0; i < 6; i++) {
+			ABCDEF = new JTextField();
+			ABCDEF.setHorizontalAlignment(SwingConstants.CENTER);
+			ABCDEF.setEditable(false);
+			ABCDEF.setText(ClassEditor.letters[i]);
+			ABCDEF.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			ABCDEF.setBounds(34 + (125 * i), 5, 125, 29);
+			header.add(ABCDEF);
+			ABCDEF.setOpaque(false);
+			ABCDEF.setBorder(null);
+		}
+		
 		
 		boolean c = false;
 		

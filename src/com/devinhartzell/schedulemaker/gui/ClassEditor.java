@@ -30,7 +30,7 @@ public class ClassEditor extends JFrame {
 	private JEditorPane location;
 	private JRadioButton[] daySelectors = new JRadioButton[6];
 	
-	private String[] letters = {"A", "B", "C", "D", "E", "F"};
+	public static String[] letters = {"A", "B", "C", "D", "E", "F"};
 	private JSpinner red;
 	private JSpinner green;
 	private JSpinner blue;
