@@ -1,12 +1,14 @@
 package com.devinhartzell.schedulemaker.gui;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JTextField;
+
+import com.devinhartzell.schedulemaker.Section;
+
 import java.awt.Font;
-import javax.swing.UIManager;
+import java.util.ArrayList;
 
 public class ScheduleMakerWindow extends JFrame {
 
@@ -14,7 +16,8 @@ public class ScheduleMakerWindow extends JFrame {
 	
 	private JPanel schedulePanel;
 	
-	private TimeSlot[][] scheduleArray = new TimeSlot[6][32];
+	public static TimeSlot[][] scheduleArray = new TimeSlot[6][32];
+	public static ArrayList<Section> classList = new ArrayList<Section>();
 	private JTextField ABCDEF;
 	
 	public ScheduleMakerWindow() {
@@ -67,5 +70,20 @@ public class ScheduleMakerWindow extends JFrame {
 		scheduleArray[day][period] = new TimeSlot(day, period, colored);
 		schedulePanel.add(scheduleArray[day][period]);
 		
+	}
+	
+	public static void update() {
+		for (int i = 0; i <= 5; i++) {
+			for (int j = 0; j <= 31; j++) {
+				scheduleArray[i][j].setSection(null);
+			}
+		}
+		
+		for (Section s : classList) {
+			for (TimeSlot t: s.times) {
+				scheduleArray[t.day][t.period].setSection(s);
+				
+			}
+		}
 	}
 }
