@@ -167,7 +167,6 @@ public class ClassEditor extends JFrame {
 		
 		if (ScheduleMakerWindow.scheduleArray[defaultDay][timeSlotID].currentClass == null) {
 			
-			System.out.println("Couldn't find class, generating info");
 			startTimeMenu.setSelectedIndex(timeSlotID);
 			endTimeMenu.setSelectedIndex(timeSlotID + 3);
 			className.setText("Class Name");
@@ -240,7 +239,7 @@ public class ClassEditor extends JFrame {
 		
 		
 		
-		setSize(420, 300);
+		setSize(420, 143);
 		setVisible(true);
 		
 	}

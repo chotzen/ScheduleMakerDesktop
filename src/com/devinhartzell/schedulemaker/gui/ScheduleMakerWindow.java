@@ -65,10 +65,7 @@ public class ScheduleMakerWindow extends JFrame {
 			c = !c;
 		}
 		
-		
-		
 		setVisible(true);
-		
 	}
 	
 	public void addTimeSlot(int day, int period, boolean colored) {
