@@ -23,6 +23,7 @@ public class ScheduleMakerWindow extends JFrame {
 	
 	public ScheduleMakerWindow() {
 		super("Schedule Maker");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		setSize(833, 1025);
 		setResizable(false);
@@ -76,10 +77,11 @@ public class ScheduleMakerWindow extends JFrame {
 		
 	}
 	
-	public static void update() {
+	public static void update() throws Exception {
 		for (int i = 0; i <= 5; i++) {
 			for (int j = 0; j <= 31; j++) {
 				scheduleArray[i][j].setSection(null);
+				scheduleArray[i][j].setText("");
 			}
 		}
 		
@@ -88,6 +90,42 @@ public class ScheduleMakerWindow extends JFrame {
 				scheduleArray[t.day][t.period].setSection(s);
 				
 			}
+			// find start and end times
+			int start = s.times.get(0).period, end = s.times.get(0).period;
+			for (TimeSlot t: s.times) {
+				if (t.period < start) {
+					start = t.period;
+				}
+				if (t.period > end) {
+					end = t.period;
+				}
+			}
+			
+			int length = end-start + 1;
+			if (length == 1) {
+				String message;
+				if (s.title.length() > 8) 
+					message = String.format("%s. - %s", s.title.substring(0, 8), s.location);
+				else
+					message = String.format("%s. - %s", s.title, s.location);
+				for (TimeSlot t: s.times) {
+					t.setText(message);
+				}
+			} else if (length > 1) {
+				int upmiddle = (int)Math.floor(length / 2.0) + start;
+				int downmiddle = upmiddle--;
+				for (TimeSlot t: s.times) {
+					if (t.period == upmiddle) t.setText(s.title);
+					if (t.period == downmiddle) t.setText(s.location);
+				}
+			} else {
+				throw new Exception();
+			}
+			
+			
+			
 		}
+		
+		
 	}
 }

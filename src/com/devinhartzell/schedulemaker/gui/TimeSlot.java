@@ -4,11 +4,13 @@ import java.awt.Color;
 
 import com.devinhartzell.schedulemaker.*;
 
-import javax.swing.JTextPane;
+import javax.swing.JTextField;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
-public class TimeSlot extends JTextPane {
+public class TimeSlot extends JTextField {
 
 	private static final long serialVersionUID = -1627576857596571966L;
 	
@@ -20,6 +22,7 @@ public class TimeSlot extends JTextPane {
 	// day >=1, day <=6
 	// period >=0, period <=31
 	public TimeSlot(int day, int period, boolean colored) {
+		setHorizontalAlignment(SwingConstants.CENTER);
 		this.day = day;
 		this.period = period;
 		if (colored)
@@ -36,6 +39,7 @@ public class TimeSlot extends JTextPane {
 			throw new NullPointerException();
 		
 		setBounds((day * 125) + 52, (period * 29) + 34, 125, 29);
+		setBorder(null);
 		
 		if (colored)
 			setBackground(Color.LIGHT_GRAY);
@@ -51,6 +55,17 @@ public class TimeSlot extends JTextPane {
 			setBackground(s.color);
 		else
 			setBackground(defaultBackground);
+	}
+	
+	@Override
+	public void setText(String s) {
+		super.setText(s);
+		if (s != "" && currentClass != null) {
+			if ((currentClass.color.getRed() + currentClass.color.getBlue() + currentClass.color.getGreen()) / 3 < 125) 
+				setForeground(Color.WHITE);
+			else
+				setForeground(Color.BLACK);
+		}
 	}
 	
 

@@ -142,7 +142,12 @@ public class ClassEditor extends JFrame {
 					ScheduleMakerWindow.classList.remove(ScheduleMakerWindow.scheduleArray[defaultDay][timeSlotID].currentClass);
 				}
 				
-				ScheduleMakerWindow.update();
+				try {
+					ScheduleMakerWindow.update();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				dispose();
 			}
 		});
