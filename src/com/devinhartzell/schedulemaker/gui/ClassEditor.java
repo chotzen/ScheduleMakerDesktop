@@ -1,7 +1,7 @@
 package com.devinhartzell.schedulemaker.gui;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JEditorPane;
@@ -51,14 +51,14 @@ public class ClassEditor extends JFrame {
 		endTimeMenu.setBounds(114, 42, 66, 20);
 		getContentPane().add(endTimeMenu);
 		
-		JTextArea txtrStartTime = new JTextArea();
-		txtrStartTime.setEditable(false);
+		JLabel txtrStartTime = new JLabel();
+		txtrStartTime.setFocusable(false);
 		txtrStartTime.setText("Start Time");
 		txtrStartTime.setBounds(10, 9, 94, 22);
 		getContentPane().add(txtrStartTime);
 		
-		JTextArea txtrEndTime = new JTextArea();
-		txtrEndTime.setEditable(false);
+		JLabel txtrEndTime = new JLabel();
+		txtrEndTime.setFocusable(false);
 		txtrEndTime.setText("End Time");
 		txtrEndTime.setBounds(10, 42, 94, 22);
 		getContentPane().add(txtrEndTime);
