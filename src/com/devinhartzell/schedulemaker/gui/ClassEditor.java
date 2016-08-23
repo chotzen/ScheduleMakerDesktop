@@ -35,6 +35,7 @@ public class ClassEditor extends JFrame {
 	private JSpinner green;
 	private JSpinner blue;
 	private JButton doneButton;
+	private JButton deleteButton;
 	
 	public ClassEditor(int timeSlotID, int defaultDay) {
 		super("Class Editor");
@@ -152,8 +153,10 @@ public class ClassEditor extends JFrame {
 			}
 		});
 		
-		doneButton.setBounds(305, 73, 89, 23);
+		doneButton.setBounds(316, 73, 78, 23);
 		getContentPane().add(doneButton);
+		
+		
 		
 		for (int i = 0; i <= 5; i++) {
 			daySelectors[i] = new JRadioButton(letters[i]);
@@ -179,6 +182,16 @@ public class ClassEditor extends JFrame {
 			blue.setValue((int)Math.round(Math.random() * 255)); 
 			colordemo.setBackground(new Color((Integer)red.getValue(), (Integer)green.getValue(), (Integer)blue.getValue()));
 			
+			deleteButton = new JButton("Cancel");
+			deleteButton.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					dispose();
+				}
+			});
+			deleteButton.setBounds(231, 73, 78, 23);
+			getContentPane().add(deleteButton);
+			
 		} else {
 			Section s = ScheduleMakerWindow.scheduleArray[defaultDay][timeSlotID].currentClass;
 			int start = s.times.get(0).period, end = s.times.get(0).period;
@@ -202,6 +215,25 @@ public class ClassEditor extends JFrame {
 			green.setValue(s.color.getGreen());
 			blue.setValue(s.color.getBlue());
 			colordemo.setBackground(new Color((Integer)red.getValue(), (Integer)green.getValue(), (Integer)blue.getValue()));
+			
+			deleteButton = new JButton("Delete");
+			deleteButton.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if (!(ScheduleMakerWindow.scheduleArray[defaultDay][timeSlotID].currentClass == null)) {
+						ScheduleMakerWindow.classList.remove(ScheduleMakerWindow.scheduleArray[defaultDay][timeSlotID].currentClass);
+					}
+					try {
+						ScheduleMakerWindow.update();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					dispose();
+				}
+			});
+			deleteButton.setBounds(231, 73, 78, 23);
+			getContentPane().add(deleteButton);
 			
 			
 		}
