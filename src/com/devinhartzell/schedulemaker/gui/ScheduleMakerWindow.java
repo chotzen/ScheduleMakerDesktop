@@ -120,13 +120,8 @@ public class ScheduleMakerWindow extends JFrame {
 				}
 			} else {
 				throw new Exception();
-			}
-			
-			
-			
-		}
-		
-		
+			}			
+		}	
 	}
 	
 	public static void main(String args[]) {
